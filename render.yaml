@@ -9,10 +9,9 @@ services:
       https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/render-test-2026-08-24/zenith-porcelain-source-render-test.tar.gz
       -o /tmp/zenith-source.tar.gz
       && tar -xzf /tmp/zenith-source.tar.gz
-      && corepack enable
-      && pnpm install --frozen-lockfile
-      && pnpm build
-    startCommand: pnpm start
+      && corepack pnpm install --frozen-lockfile
+      && corepack pnpm build
+    startCommand: corepack pnpm start
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
