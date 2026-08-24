@@ -3,7 +3,7 @@ services:
     name: zenith-porcelain-test
     runtime: node
     region: frankfurt
-    plan: free
+    plan: starter
     buildCommand: >-
       curl -fsSL
       https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/seo-aio-2026-08-24/zenith-porcelain-source-seo-aio-2026-08-24.tar.gz
