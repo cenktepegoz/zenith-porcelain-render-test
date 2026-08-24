@@ -6,7 +6,7 @@ services:
     plan: starter
     buildCommand: >-
       curl -fsSL
-      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/seo-aio-canonical-2026-08-24/zenith-porcelain-source-seo-aio-canonical-2026-08-24.tar.gz
+      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/seo-aio-final-2026-08-24/zenith-porcelain-source-seo-aio-final-2026-08-24.tar.gz
       -o /tmp/zenith-source.tar.gz
       && tar -xzf /tmp/zenith-source.tar.gz
       && corepack pnpm install --frozen-lockfile
@@ -17,4 +17,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: seo-aio-canonical-2026-08-24
+        value: seo-aio-final-2026-08-24
