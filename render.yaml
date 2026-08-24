@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: zenith-porcelain-test
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: >-
+      curl -fsSL
+      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/render-test-2026-08-24/zenith-porcelain-source-render-test.tar.gz
+      -o /tmp/zenith-source.tar.gz
+      && tar -xzf /tmp/zenith-source.tar.gz
+      && corepack enable
+      && pnpm install --frozen-lockfile
+      && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_VERSION
+        value: render-test-2026-08-24
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "465"
+      - key: SMTP_SECURE
+        value: "true"
+      - key: SMTP_USER
+        value: info@zenithporcelain.com
+      - key: SMTP_FROM
+        value: Zenith Porcelain Website <info@zenithporcelain.com>
+      - key: SMTP_TO
+        value: info@zenithporcelain.com
+      - key: SMTP_PASS
+        sync: false
