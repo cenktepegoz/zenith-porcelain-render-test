@@ -17,6 +17,10 @@ services:
       https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/glass-vs-wood-guide-2026-08-26/zenith-glass-vs-wood-web-overlay-2026-08-26-v2.tar.gz
       -o /tmp/zenith-glass-vs-wood-overlay.tar.gz
       && tar -xzf /tmp/zenith-glass-vs-wood-overlay.tar.gz
+      && curl -fsSL
+      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/mobile-dock-knowledge-2026-08-26/zenith-mobile-dock-knowledge-2026-08-26.tar.gz
+      -o /tmp/zenith-mobile-dock-overlay.tar.gz
+      && tar -xzf /tmp/zenith-mobile-dock-overlay.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -25,4 +29,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: glass-vs-wood-guide-2026-08-26
+        value: mobile-dock-knowledge-2026-08-26
