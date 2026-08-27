@@ -5,22 +5,16 @@ services:
     region: frankfurt
     plan: starter
     buildCommand: >-
-      curl -fsSL
-      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/seo-aio-final-2026-08-24/zenith-porcelain-source-seo-aio-final-2026-08-24.tar.gz
-      -o /tmp/zenith-source.tar.gz
+      curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/seo-aio-final-2026-08-24/zenith-porcelain-source-seo-aio-final-2026-08-24.tar.gz -o /tmp/zenith-source.tar.gz
       && tar -xzf /tmp/zenith-source.tar.gz
-      && curl -fsSL
-      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/horeca-project-2026-08-25/zenith-horeca-web-overlay-2026-08-25.tar.gz
-      -o /tmp/zenith-horeca-overlay.tar.gz
+      && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/horeca-project-2026-08-25/zenith-horeca-web-overlay-2026-08-25.tar.gz -o /tmp/zenith-horeca-overlay.tar.gz
       && tar -xzf /tmp/zenith-horeca-overlay.tar.gz
-      && curl -fsSL
-      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/glass-vs-wood-guide-2026-08-26/zenith-glass-vs-wood-web-overlay-2026-08-26-v2.tar.gz
-      -o /tmp/zenith-glass-vs-wood-overlay.tar.gz
+      && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/glass-vs-wood-guide-2026-08-26/zenith-glass-vs-wood-web-overlay-2026-08-26-v2.tar.gz -o /tmp/zenith-glass-vs-wood-overlay.tar.gz
       && tar -xzf /tmp/zenith-glass-vs-wood-overlay.tar.gz
-      && curl -fsSL
-      https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/mobile-dock-knowledge-2026-08-26/zenith-mobile-dock-knowledge-2026-08-26.tar.gz
-      -o /tmp/zenith-mobile-dock-overlay.tar.gz
+      && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/mobile-dock-knowledge-2026-08-26/zenith-mobile-dock-knowledge-2026-08-26.tar.gz -o /tmp/zenith-mobile-dock-overlay.tar.gz
       && tar -xzf /tmp/zenith-mobile-dock-overlay.tar.gz
+      && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/shower-lamination-guide-2026-08-27/zenith-shower-lamination-knowledge-2026-08-27.tar.gz -o /tmp/zenith-shower-lamination-overlay.tar.gz
+      && tar -xzf /tmp/zenith-shower-lamination-overlay.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -29,4 +23,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: mobile-dock-knowledge-2026-08-26
+        value: shower-lamination-guide-2026-08-27
