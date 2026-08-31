@@ -15,6 +15,8 @@ services:
       && tar -xzf /tmp/zenith-mobile-dock-overlay.tar.gz
       && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/shower-lamination-guide-2026-08-27/zenith-shower-lamination-knowledge-2026-08-27.tar.gz -o /tmp/zenith-shower-lamination-overlay.tar.gz
       && tar -xzf /tmp/zenith-shower-lamination-overlay.tar.gz
+      && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/marmox-porselen-video-2026-08-31/zenith-marmox-porselen-lavabo-video-2026-08-31.tar.gz -o /tmp/zenith-marmox-overlay.tar.gz
+      && tar -xzf /tmp/zenith-marmox-overlay.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -23,4 +25,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: shower-lamination-guide-2026-08-27
+        value: marmox-porselen-video-2026-08-31
