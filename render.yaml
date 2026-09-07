@@ -19,6 +19,8 @@ services:
       && tar -xzf /tmp/zenith-marmox-overlay.tar.gz
       && tar -xzf zenith-furniture-page-2026-09-04.tar.gz
       && tar -xzf zenith-seo-nap-content-2026-09-07.tar.gz
+      && echo '25eb1f459190acdb9e43a42f0fb19a8b5e483b1d7ce011905481ffcdebe5d868  zenith-google-analytics-reviewed-2026-09-07.tar.gz' | sha256sum -c -
+      && tar -xzf zenith-google-analytics-reviewed-2026-09-07.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -27,4 +29,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: seo-nap-content-2026-09-07
+        value: analytics-reviewed-2026-09-07
