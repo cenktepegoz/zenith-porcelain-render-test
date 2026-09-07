@@ -18,6 +18,7 @@ services:
       && curl -fsSL https://github.com/cenktepegoz/zenith-porcelain-render-test/releases/download/marmox-porselen-video-2026-08-31/zenith-marmox-porselen-lavabo-video-2026-08-31.tar.gz -o /tmp/zenith-marmox-overlay.tar.gz
       && tar -xzf /tmp/zenith-marmox-overlay.tar.gz
       && tar -xzf zenith-furniture-page-2026-09-04.tar.gz
+      && tar -xzf zenith-seo-nap-content-2026-09-07.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -26,4 +27,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: furniture-page-2026-09-04
+        value: seo-nap-content-2026-09-07
