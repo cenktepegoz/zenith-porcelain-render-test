@@ -23,6 +23,8 @@ services:
       && tar -xzf zenith-google-analytics-reviewed-2026-09-07.tar.gz
       && echo 'bc5a140e3702d339f6ec8572f17a5f5ebdf8b56aa9edcd2b8d9ba3396a3b8a4f  zenith-ad-url-redirect-2026-09-09.tar.gz' | sha256sum -c -
       && tar -xzf zenith-ad-url-redirect-2026-09-09.tar.gz
+      && echo 'ebfda55d09b611419c3ec9ae6fa126ddea5c99d92f30397b7f1882dff6b3d779  zenith-index-url-repair-2026-09-09.tar.gz' | sha256sum -c -
+      && tar -xzf zenith-index-url-repair-2026-09-09.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -31,4 +33,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: ad-url-redirect-2026-09-09
+        value: index-url-repair-2026-09-09
