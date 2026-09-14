@@ -25,6 +25,8 @@ services:
       && tar -xzf zenith-ad-url-redirect-2026-09-09.tar.gz
       && echo 'ebfda55d09b611419c3ec9ae6fa126ddea5c99d92f30397b7f1882dff6b3d779  zenith-index-url-repair-2026-09-09.tar.gz' | sha256sum -c -
       && tar -xzf zenith-index-url-repair-2026-09-09.tar.gz
+      && echo '7e0334fcbe2f141a99159baa5790daca40fd1edf05666f5d1093385317001b29  zenith-countertop-comparison-2026-09-14.tar.gz' | sha256sum -c -
+      && tar -xzf zenith-countertop-comparison-2026-09-14.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -33,4 +35,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: index-url-repair-2026-09-09
+        value: countertop-comparison-2026-09-14
