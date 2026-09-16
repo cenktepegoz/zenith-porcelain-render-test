@@ -27,6 +27,8 @@ services:
       && tar -xzf zenith-index-url-repair-2026-09-09.tar.gz
       && echo '7e0334fcbe2f141a99159baa5790daca40fd1edf05666f5d1093385317001b29  zenith-countertop-comparison-2026-09-14.tar.gz' | sha256sum -c -
       && tar -xzf zenith-countertop-comparison-2026-09-14.tar.gz
+      && echo '9ce18db89f734631bcb2e70f5678eb8372e386e84b44de00b9bb914e646b6ca1  zenith-showroom-retail-guide-2026-09-15.tar.gz' | sha256sum -c -
+      && tar -xzf zenith-showroom-retail-guide-2026-09-15.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -35,4 +37,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: countertop-comparison-2026-09-14
+        value: showroom-retail-guide-2026-09-15
