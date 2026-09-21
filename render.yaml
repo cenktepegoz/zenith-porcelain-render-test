@@ -31,6 +31,8 @@ services:
       && tar -xzf zenith-showroom-retail-guide-2026-09-15.tar.gz
       && echo '9d9ab682769786d5956bb75a921f0eb553ab266f9b34dec0f9ee00212ac479ac  zenith-hotel-restoration-2026-09-16.tar.gz' | sha256sum -c -
       && tar -xzf zenith-hotel-restoration-2026-09-16.tar.gz
+      && echo '365a9698285f74cd89d00cc5f539c240c52f15a288b1cb522c04f9f4992e113b  zenith-local-regions-2026-09-21.tar.gz' | sha256sum -c -
+      && tar -xzf zenith-local-regions-2026-09-21.tar.gz
       && corepack pnpm install --frozen-lockfile
       && corepack pnpm build
     startCommand: corepack pnpm start
@@ -39,4 +41,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: APP_VERSION
-        value: hotel-restoration-2026-09-16
+        value: local-regions-2026-09-21
