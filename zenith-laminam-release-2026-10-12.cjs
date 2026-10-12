@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('node:fs'),crypto=require('node:crypto'),cp=require('node:child_process'),path=require('node:path');
+const root=process.cwd(),archive=path.join(root,'zenith-laminam-organic-2026-10-12.tar.gz');
+const expected='3e8053194144906d90525bc95249e12d64eb5d93c44ef367f1be96e73e64db3c';
+if(crypto.createHash('sha256').update(fs.readFileSync(archive)).digest('hex')!==expected)throw Error('Release archive checksum mismatch');
+const entries=cp.execFileSync('tar',['-tzf',archive],{encoding:'utf8'}).trim().split('\n');
+if(entries.some(x=>x.startsWith('/')||x.split('/').includes('..')))throw Error('Unsafe archive path');
+const analytics=fs.readFileSync(path.join(root,'app/lib/analytics.ts'));
+cp.execFileSync('tar',['-xzf',archive,'-C',root]);
+cp.execFileSync(process.execPath,[path.join(root,'trust-fixes.cjs'),root],{stdio:'inherit'});
+cp.execFileSync(process.execPath,[path.join(root,'integrate.cjs'),root],{stdio:'inherit'});
+if(!analytics.equals(fs.readFileSync(path.join(root,'app/lib/analytics.ts'))))throw Error('Analytics source changed unexpectedly');
+console.log('Laminam organic release applied; Analytics source preserved.');
