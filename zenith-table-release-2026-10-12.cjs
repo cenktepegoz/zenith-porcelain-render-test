@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('node:fs'),cp=require('node:child_process'),crypto=require('node:crypto');
+const archive='zenith-table-organic-2026-10-12.tar.gz';
+if(crypto.createHash('sha256').update(fs.readFileSync(archive)).digest('hex')!=='caca1bb3f95ebbfd0990999f39ce79ceddcfe8738931cf4413c5720179cc26a3')throw Error('Table archive checksum mismatch');
+const entries=cp.execFileSync('tar',['-tzf',archive],{encoding:'utf8'}).trim().split('\n');
+const allowed=["app/porcelain-table-content.ts","app/components/porcelain-table-details.tsx","integrate-tables.cjs"];
+if(entries.some(e=>!allowed.includes(e)))throw Error('Unexpected archive member');
+const analytics=fs.readFileSync('app/lib/analytics.ts');
+cp.execFileSync('tar',['-xzf',archive]);
+cp.execFileSync(process.execPath,['integrate-tables.cjs'],{stdio:'inherit'});
+if(!analytics.equals(fs.readFileSync('app/lib/analytics.ts')))throw Error('Unexpected Analytics change');
+console.log('Table organic release applied; Analytics preserved.');
