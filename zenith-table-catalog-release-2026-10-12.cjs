@@ -7,3 +7,20 @@ const analytics=fs.readFileSync('app/lib/analytics.ts');
 cp.execFileSync('tar',['-xzf',archive]);
 cp.execFileSync(process.execPath,['integrate-catalog.cjs'],{stdio:'inherit'});
 if(!analytics.equals(fs.readFileSync('app/lib/analytics.ts')))throw Error('Unexpected analytics change');
+
+// Narrow Google Ads measurement CSP fix (2026-11-20).
+// Preserve consent handling and every other security directive.
+{
+  const configFile = 'next.config.ts';
+  const before = "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com;";
+  const after = before.slice(0, -1) + " https://pagead2.googlesyndication.com;";
+  const source = fs.readFileSync(configFile, 'utf8');
+  if (source.split(after).length === 2) {
+    console.log('Google Ads CSP allowance already present');
+  } else {
+    if (source.split(before).length !== 2) throw Error('Unexpected CSP baseline; refusing broad policy change');
+    fs.writeFileSync(configFile, source.replace(before, after));
+    console.log('Added only pagead2.googlesyndication.com to CSP connect-src');
+  }
+  if (!analytics.equals(fs.readFileSync('app/lib/analytics.ts'))) throw Error('Unexpected analytics change');
+}
